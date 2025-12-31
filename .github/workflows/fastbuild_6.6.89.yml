@@ -365,9 +365,11 @@ jobs:
           cp ./oppo_oplus_realme_sm8750/zram_patch/001-lz4.patch ./common/
           cp ./oppo_oplus_realme_sm8750/zram_patch/lz4armv8.S ./common/lib
           cp ./oppo_oplus_realme_sm8750/zram_patch/002-zstd.patch ./common/
+          cp ./oppo_oplus_realme_sm8750/zram_patch/unicode_bypass_fix_6.12.patch ./common/
           cd ./common
           git apply -p1 < 001-lz4.patch || true
           patch -p1 < 002-zstd.patch || true
+          git apply -p1 < unicode_bypass_fix_6.12.patch || true
 
       - name: 应用 lz4kd 补丁
         if: inputs.lz4kd_enable
